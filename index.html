@@ -697,31 +697,3 @@ render();
 </script>
 </body>
 </html>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "PASTE_FROM_FIREBASE",
-    authDomain: "PASTE_FROM_FIREBASE",
-    projectId: "PASTE_FROM_FIREBASE",
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  async function saveSale() {
-    const item = document.getElementById("item").value;
-    const price = document.getElementById("price").value;
-
-    await addDoc(collection(db, "sales"), {
-      item: item,
-      price: price,
-      time: new Date()
-    });
-
-    alert("Saved!");
-  }
-
-  window.saveSale = saveSale;
-</script>
